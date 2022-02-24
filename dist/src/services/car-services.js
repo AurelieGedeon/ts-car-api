@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.carService = void 0;
 const getAllCars = () => {
     const cars = [];
     const car1 = { make: "Ford", model: "Fiesta", year: 2022 };
@@ -7,5 +8,5 @@ const getAllCars = () => {
     cars.push(car1, car2);
     return cars;
 };
-console.log(...getAllCars());
+exports.carService = { getAllCars };
 //# sourceMappingURL=car-services.js.map

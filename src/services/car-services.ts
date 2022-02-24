@@ -15,4 +15,4 @@ const getAllCars = (): Car[] => {
     return cars
 }
 
-console.log(...getAllCars())
+export const carService: CarService = {getAllCars} as CarService
