@@ -14,6 +14,13 @@ app.post("/cars", async (req: Request, res: Response) => {
   const { make, model, year } = req.body;
   const car: Car = { make, model, year };
 
+  try {
+    const result = await carService.addNewCar(car);
+    car.id = result.id;
+  } catch (error) {
+    res.status(500).send("Something went wrong");
+  }
+
   res.status(201).json(car);
 });
 

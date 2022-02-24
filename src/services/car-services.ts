@@ -3,7 +3,7 @@ import { connectDb } from "../connectDb";
 import { CollectionReference } from "firebase-admin/firestore";
 
 interface CarService {
-  addNewCar(car: Car): Car;
+  addNewCar(car: Car): Promise<Car>;
   getAllCars(): Promise<Car[] | null>;
   getCarById(carId: string): Car;
 }
@@ -32,9 +32,9 @@ const getAllCars = async (): Promise<Car[] | null> => {
 
 const addNewCar = async (car: Car): Promise<Car> => {
   const result = await carCollection.add(car);
-
   car.id = result.id;
+
   return car;
 };
 
-export const carService = { getAllCars } as CarService;
+export const carService = { getAllCars, addNewCar } as CarService;
